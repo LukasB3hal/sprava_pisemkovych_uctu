@@ -24,7 +24,7 @@ namespace sprava_pisemkovych_uctu_win_forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.RemoveOwnedForm(Form);
+            
         }
     }
 }
