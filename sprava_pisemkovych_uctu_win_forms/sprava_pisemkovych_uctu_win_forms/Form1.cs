@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace sprava_pisemkovych_uctu_win_forms
 {
-    public partial class Form1 : Form
+    public partial class Preparation : Form
     {
-        public Form1()
+        public Preparation()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.RemoveOwnedForm(Form);
         }
     }
 }
