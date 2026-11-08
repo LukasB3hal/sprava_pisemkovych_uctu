@@ -40,6 +40,7 @@ namespace sprava_pisemkovych_uctu_win_forms
                 bool semicolon_error = false;
                 string[] array;
                 string line;
+                int valid_min = int.MaxValue;
                 StreamReader sr = new StreamReader(openFileDialog1.FileName);
                 while (!sr.EndOfStream)
                 {
@@ -53,6 +54,10 @@ namespace sprava_pisemkovych_uctu_win_forms
                             if (int.TryParse(array[1], out int parsed))
                             {
                                 accounts.Add(parsed);
+                                if (parsed < valid_min)
+                                {
+                                    valid_min = parsed;
+                                }
                             }
                             else
                             {
@@ -67,23 +72,21 @@ namespace sprava_pisemkovych_uctu_win_forms
                         }
                     }
                 }
-
-                int accounts_count = accounts.Count();
-                int last_created_account = 0;
+                int start_position = valid_min;
                 int account_to_create;
                 // Dopočítávání čísel účtů
-                if (accounts_count > 0)
+                if (accounts.Count > 0)
                 {
-                    for (int i = 0; i < accounts_count; i++)
+                    for (int i = 0; i < accounts.Count; i++)
                     {
                         if (accounts[i] == int.MinValue)
                         {
-                            account_to_create = last_created_account + 1;
+                            account_to_create = start_position + 1;
                             while (accounts.Contains(account_to_create)){
                                 account_to_create++;
                             }
                             accounts[i] = account_to_create;
-                            last_created_account = account_to_create;
+                            start_position = account_to_create;
                         }
                     }
                 }
@@ -105,6 +108,9 @@ namespace sprava_pisemkovych_uctu_win_forms
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (students.Count() < 1) {
+                
+            }
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 int accounts_count = accounts.Count();
