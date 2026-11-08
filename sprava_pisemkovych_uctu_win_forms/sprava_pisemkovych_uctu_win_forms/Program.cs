@@ -16,7 +16,7 @@ namespace sprava_pisemkovych_uctu_win_forms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Preparation());
+            Application.Run(new main());
         }
     }
 }
