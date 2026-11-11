@@ -21,6 +21,7 @@ namespace sprava_pisemkovych_uctu_win_forms
         public main()
         {
             InitializeComponent();
+            this.MinimumSize = new System.Drawing.Size(400, 400);
         }
 
 
